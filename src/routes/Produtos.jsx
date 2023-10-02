@@ -20,6 +20,11 @@ export default function Produtos() {
     <div>
       <h1>Produtos</h1>
 
+      <Link to="/adicionar/produto"> {/* Adicione este link para a rota de adição de produtos */}
+        <button className={`${style.adicionarBtn} ${style.seuEstiloEspecifico}`}>Adicionar Produto</button>
+      </Link>
+
+
       <table className={style.tblEstilo}>
         <thead>
           <tr>
