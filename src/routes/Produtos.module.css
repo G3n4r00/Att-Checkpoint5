@@ -1,0 +1,55 @@
+
+.tblEstilo{
+    border-collapse: collapse;
+    border: 2px solid #828080;
+    
+    & th{
+        background-color: skyblue;
+        border:2px solid #828080;
+        padding: 10px;
+        text-align: center;
+    }
+
+    & tr:nth-child(even){
+        background-color: rgb(213, 222, 235);
+    }
+
+    & .lineTbl{
+        background-color: aliceblue;
+        &:hover {
+                background-color: #655cdf5e;
+            }
+
+        & td{
+            border: 2px solid #828080;
+            padding: 5px;
+
+            &:first-child{
+                text-align: center;
+            }
+
+            &:last-child{
+                text-align: center;
+            }
+
+            & a {
+                margin: 5px;
+            }
+
+        }   
+    }
+
+    & tfoot{
+        background-color: rgb(184, 223, 238);
+        & td{
+            border: 2px solid #828080;
+            padding: 5px;
+            text-align: center;
+        }
+    }
+}
+
+h1{
+    text-align: center;
+    padding: 10px;
+}
