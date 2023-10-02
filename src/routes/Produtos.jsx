@@ -45,9 +45,6 @@ export default function Produtos() {
                 <Link to={`/excluir/produtos/${item.id}`}>
                   <Excluir />
                 </Link>
-                <Link to={`/adicionar/produtos/${item.id}`}>
-                  <Adicionar />
-                </Link>
               </td>
             </tr>
           ))}
