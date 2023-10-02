@@ -6,13 +6,16 @@ import { useState, useEffect } from "react";
 import { ListaProdutos } from "../components/ListaProdutos";
 
 export default function Produtos() {
+  // Registra a renderização do componente no console
   console.log("Componente Produtos renderizado");
+  // Define o título da página
   document.title = "Lista de Produtos";
 
+  // Define o estado local para armazenar a lista de produtos
   const [listaProdutosLocal, setListaProdutosLocal] = useState([{}]);
 
   useEffect(() => {
-    // Carregue os produtos da fonte de dados (ListaProdutos)
+    // Carrega os produtos da fonte de dados (ListaProdutos) quando o componente é montado
     setListaProdutosLocal(ListaProdutos);
   }, []);
 
@@ -20,10 +23,10 @@ export default function Produtos() {
     <div>
       <h1>Produtos</h1>
 
-      <Link to="/adicionar/produto"> {/* Adicione este link para a rota de adição de produtos */}
+      {/* Adiciona um link para a rota de adição de produtos */}
+      <Link to="/adicionar/produto">
         <button className={`${style.adicionarBtn} ${style.seuEstiloEspecifico}`}>Adicionar Produto</button>
       </Link>
-
 
       <table className={style.tblEstilo}>
         <thead>
@@ -44,6 +47,7 @@ export default function Produtos() {
               <td>{item.desc}</td>
               <td>{item.preco}</td>
               <td>
+                {/* Cria links para editar e excluir produtos */}
                 <Link to={`/editar/produtos/${item.id}`}>
                   <Editar />
                 </Link>
