@@ -3,11 +3,17 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { ListaProdutos } from '../components/ListaProdutos';
 
 export default function EditarProdutos() {
+  // Define o título da página
   document.title = "EDITAR PRODUTO";
 
+  // Obtém a função de navegação do React Router
   const navigate = useNavigate();
+  // Obtém o parâmetro 'id' da URL usando useParams
   const { id } = useParams();
+  // Filtra o produto com base no 'id' da URL e obtém o primeiro resultado
   const produtoRecuperado = ListaProdutos.filter((produto) => produto.id == id)[0]
+
+  // Define o estado do componente para armazenar as informações do produto
   const [produto, setProduto] = useState({
     id: produtoRecuperado.id,
     nome: produtoRecuperado.nome,
@@ -16,32 +22,28 @@ export default function EditarProdutos() {
     preco: produtoRecuperado.preco,
   })
 
+  // Função chamada quando os campos de entrada mudam
   const handleChange = (e) => {
-    //Destructuring
+    // Destructuring para obter 'name' e 'value' do elemento de entrada
     const { name, value } = e.target;
-    //Populando o state produto com as propriedades dos inputs que estão sendo ativados, utilizando SPREAD.
+    // Atualiza o estado 'produto' com as novas informações usando o operador de espalhamento (spread)
     setProduto({ ...produto, [name]: value });
   }
 
+  // Função chamada quando o formulário é submetido
   const handleSubmit = (e) => {
     e.preventDefault();
     let indice;
-    //Recuperando o índice do produto alterado com forEach.
-    // ListaProdutos.forEach((item,index)=>{
-    //   if(item === produto){
-    //     indice = index;
-    //   }
-    // });
-
-    //Ou utilizando o método indexOf
+    // Encontra o índice do produto a ser editado na lista usando 'indexOf'
     indice = ListaProdutos.findIndex(item => item.id == produto.id);
 
-    //Alterando o produto na lista com o método splice()
+    // Altera o produto na lista com o método 'splice'
     ListaProdutos.splice(indice, 1, produto);
 
-    //Redirecionando o usuáio para a página de produtos!
+    // Redireciona o usuário de volta para a página de produtos
     navigate('/produtos');
   }
+
   return (
     <>
       <div>
